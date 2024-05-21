@@ -232,14 +232,11 @@ You must use Finish to indict you have finished the task. And each action only c
 Given information: {text}
 Query: {query}{scratchpad} """
 
-DAY_BY_DAY_INSTRUCTION = """You are a proficient planner. You are given a travel planning query as well as the current state of the travel plan as well as reference information for the travel plan in CSV format. Please give me the next day of the plan. The output must fulfill the following criteria:
-1. Include specifics such as flight numbers (e.g., F0123456), restaurant names, and hotel names. 
-2. All the information in your plan should be derived from the provided reference information. You must adhere to the format given in the example. 
-3. All details should align with common sense. For example, attraction visits and meals are expected to be diverse; you can see which attractions and restaurants have been visited in the current state. 
-4. The symbol '-' indicates that information is unnecessary. For example, in the provided sample, you do not need to plan after returning to the departure city. When you travel to two cities in one day, you should note it in the 'Current City' section as in the example (i.e., from A to B).
-***** EXAMPLE *****
+DAY_BY_DAY_INSTRUCTION = """You are a proficient planner. Based on the provided information and query and current state, please give me a plan for the next day, including specifics such as flight numbers (e.g., F0123456), restaurant names, and accommodation names. Note that all the information in your plan should be derived from the provided data. You must adhere to the format given in the example. Additionally, all details should align with commonsense. The symbol '-' indicates that information is unnecessary. For example, in the provided sample, you do not need to plan after returning to the departure city. When you travel to two cities in one day, you should note it in the 'Current City' section as in the example (i.e., from A to B).
+
+***** Example *****
 Query: Could you create a travel plan for 7 people from Ithaca to Charlotte spanning 3 days, from March 8th to March 14th, 2022, with a budget of $30,200?
-Current State: 
+Current State:
 Day 1:
 Current City: from Ithaca to Charlotte
 Transportation: Flight Number: F3633413, from Ithaca to Charlotte, Departure Time: 05:38, Arrival Time: 07:46
@@ -258,7 +255,8 @@ Lunch: Birbal Ji Dhaba, Charlotte
 Dinner: Pind Balluchi, Charlotte
 Accommodation: Affordable Spacious Refurbished Room in Bushwick!, Charlotte
 
-Next Day:
+
+Next Day Plan:
 Day 3:
 Current City: from Charlotte to Ithaca
 Transportation: Flight Number: F3786167, from Charlotte to Ithaca, Departure Time: 21:42, Arrival Time: 23:26
@@ -270,13 +268,10 @@ Accommodation: -
 
 ***** Example Ends *****
 
-Following the following steps to answer the query:
-1. Reason out each component of the plan, starting with the current city and ending with the accommodation. Enclose this section with <Reasoning: >.
-
-Reference Information: {reference_information}
+Given information: {reference_information}
 Query: {query}
 Current State: {current_state}
-Travel Plan:"""
+Next Day:"""
 
 planner_agent_prompt = PromptTemplate(
                         input_variables=["text","query"],
@@ -309,6 +304,6 @@ langfun_planner_agent_prompt = PromptTemplate(
                         )
 
 langfun_day_by_day_agent_prompt = PromptTemplate(
-                        input_variables=["text","query","current_state"],
+                        input_variables=["reference_information","query","current_state"],
                         template = DAY_BY_DAY_INSTRUCTION,
                         )

@@ -209,4 +209,6 @@ if __name__ == '__main__':
     
     print("------------------")
     print(detailed_scores)
+    with open("evaluated_scores.json", "w", encoding='utf-8') as f:
+        json.dump(detailed_scores, f)
     print("------------------")

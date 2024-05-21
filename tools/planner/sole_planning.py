@@ -111,38 +111,43 @@ if __name__ == "__main__":
 
     with get_openai_callback() as cb:
         for number in tqdm(numbers[:]):
-            if os.path.exists(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl')):
-                print("Skipping ",number)
-                continue
-
-            query_data = query_data_list[number-1]
-            reference_information = query_data['reference_information']
             while True:
-                    if args.strategy in ['react','reflexion']:
-                        planner_results, scratchpad  = planner.run(reference_information, query_data['query'])
-                    if args.strategy in ['by_day']:
-                        reference_information = convert_reference_information(reference_information)
-                        planner_results  = planner.run(reference_information, query_data['query'])
-                    else:
-                        planner_results  = planner.run(reference_information, query_data['query'])
-                    if planner_results != None:
+                try: 
+                    if os.path.exists(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl')) or os.path.exists(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.json')):
+                        print("Skipping ",number)
                         break
-            print(planner_results)
-            # check if the directory exists
-            if not os.path.exists(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning')):
-                os.makedirs(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning'))
-            if not os.path.exists(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl')):
-                result =  [{}]
-            else:
-                result = json.load(open(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl')))
-            if args.strategy in ['react','reflexion']:
-                result[-1][f'{args.model_name}_{args.strategy}_sole-planning_results_logs'] = scratchpad 
-            result[-1][f'{args.model_name}_{args.strategy}_sole-planning_results'] = planner_results
-            # write to json file
-            if(args.model_name=="langfun"):
-                with open(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl'), 'wb') as f:
-                    pickle.dump(planner_results, f)
-            else:
-                with open(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.json'), 'w') as f:
-                    json.dump(result, f, indent=4)
+
+                    query_data = query_data_list[number-1]
+                    reference_information = query_data['reference_information']
+                    while True:
+                            if args.strategy in ['react','reflexion']:
+                                planner_results, scratchpad  = planner.run(reference_information, query_data['query'])
+                            if args.strategy in ['by_day']:
+                                reference_information = convert_reference_information(reference_information)
+                                planner_results  = planner.run(reference_information, query_data['query'])
+                            else:
+                                planner_results  = planner.run(reference_information, query_data['query'])
+                            if planner_results != None:
+                                break
+                    print(planner_results)
+                    # check if the directory exists
+                    if not os.path.exists(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning')):
+                        os.makedirs(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning'))
+                    if not os.path.exists(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl')):
+                        result =  [{}]
+                    else:
+                        result = json.load(open(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl')))
+                    if args.strategy in ['react','reflexion']:
+                        result[-1][f'{args.model_name}_{args.strategy}_sole-planning_results_logs'] = scratchpad 
+                    result[-1][f'{args.model_name}_{args.strategy}_sole-planning_results'] = planner_results
+                    # write to json file
+                    if(args.model_name=="langfun"):
+                        with open(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.pkl'), 'wb') as f:
+                            pickle.dump(planner_results, f)
+                    else:
+                        with open(os.path.join(f'{args.output_dir}/{args.model_name}_{args.set_type}/sole-planning/generated_plan_{number}.json'), 'w') as f:
+                            json.dump(result, f, indent=4)
+                    break
+                except Exception as e:
+                    print(e)
         print(cb)
