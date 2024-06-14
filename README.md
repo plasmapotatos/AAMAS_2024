@@ -79,7 +79,7 @@ export MODEL_NAME=MODEL_NAME # langfun
 export OPENAI_API_KEY=YOUR_OPENAI_KEY
 # if you do not want to test google models, like gemini, just input "1".
 export GOOGLE_API_KEY=YOUR_GOOGLE_KEY
-# SET_TYPE in ['validation', 'test']
+# SET_TYPE in ['validation', 'test', 'train']
 export SET_TYPE=validation
 # STRATEGY in ['direct','cot','react','reflexion', 'by_day']
 export STRATEGY=direct
@@ -118,7 +118,7 @@ We support the offline validation set evaluation through the provided evaluation
 
 ```bash
 export SET_TYPE=validation
-export EVALUATION_FILE_PATH=../postprocess/validation_gpt-4-1106-preview_direct_sole-planning_submission.jsonl
+export EVALUATION_FILE_PATH=../postprocess/train_gpt-4-1106-preview_direct_sole-planning_submission.jsonl
 
 cd evaluation
 python eval.py --set_type $SET_TYPE --evaluation_file_path $EVALUATION_FILE_PATH

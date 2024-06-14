@@ -110,6 +110,8 @@ if __name__ == "__main__":
         ]
     elif args.set_type == "test":
         query_data_list = load_dataset("osunlp/TravelPlanner", "test")["test"]
+    elif args.set_type == "train":
+        query_data_list = load_dataset("osunlp/TravelPlanner", "train")["train"]
     numbers = [i for i in range(1, len(query_data_list) + 1)]
 
     if args.strategy == "direct":
