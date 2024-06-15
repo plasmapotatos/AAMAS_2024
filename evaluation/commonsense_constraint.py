@@ -660,22 +660,22 @@ def is_not_absent(question, tested_data):
     for i in range(min(question["days"], len(tested_data))):
         unit = tested_data[i]
 
-        if "transportation" not in unit or unit["transportation"] == "-":
+        if "transportation" not in unit:
             return False, f"No Transportation Info."
 
-        if "breakfast" not in unit or unit["breakfast"] == "-":
+        if "breakfast" not in unit:
             return False, f"No Breakfast Info."
 
-        if "lunch" not in unit or unit["lunch"] == "-":
+        if "lunch" not in unit:
             return False, f"No Lunch Info."
 
-        if "dinner" not in unit or unit["dinner"] == "-":
+        if "dinner" not in unit:
             return False, f"No Dinner Info."
 
-        if "attraction" not in unit or unit["attraction"] == "-":
+        if "attraction" not in unit:
             return False, f"No Attraction Info."
 
-        if "accommodation" not in unit or unit["accommodation"] == "-":
+        if "accommodation" not in unit:
             return False, f"No Accommodation Info."
 
         if ("from " in unit["current_city"] or "to " in unit["current_city"]) and unit[

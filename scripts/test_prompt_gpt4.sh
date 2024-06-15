@@ -7,7 +7,7 @@ export MODEL_NAME=gpt-4-1106-preview
 # if you do not want to test google models, like gemini, just input "1".
 export GOOGLE_API_KEY=1
 # SET_TYPE in ['validation', 'test', 'train']
-export SET_TYPE=train
+export SET_TYPE=validation
 # STRATEGY in ['direct','cot','react','reflexion']
 export STRATEGY=direct
 
@@ -27,7 +27,7 @@ python element_extraction.py  --set_type $SET_TYPE --output_dir $OUTPUT_DIR --mo
 
 python combination.py --set_type $SET_TYPE --output_dir $OUTPUT_DIR --model_name $MODEL_NAME --strategy $STRATEGY --submission_file_dir $SUBMISSION_FILE_DIR --mode $MODE
 
-export EVALUATION_FILE_PATH=../postprocess/train_gpt-4-1106-preview_direct_sole-planning_submission.jsonl
+export EVALUATION_FILE_PATH=../postprocess/validation_gpt-4-1106-preview_direct_sole-planning_submission.jsonl
 
 cd ../evaluation
 python eval.py --set_type $SET_TYPE --evaluation_file_path $EVALUATION_FILE_PATH

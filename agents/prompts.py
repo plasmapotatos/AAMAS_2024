@@ -91,48 +91,101 @@ PLANNER_INSTRUCTION = """You are a proficient planner. You are given a travel pl
 24. Validate the availability and details of all flights, accommodations, and restaurants to ensure accuracy and feasibility within the travel dates and locations.
 25. Maintain consistency and accuracy in city names and other relevant location information to ensure proper validation by the evaluation script.
 ***** Example *****
-Query: Could you create a travel plan for 7 people from Ithaca to Charlotte spanning 3 days, from March 8th to March 14th, 2022, with a budget of $10,000?
+Query: I need help crafting a 7-day travel plan for two individuals, departing from St. Louis and intending to visit 3 separate cities in California. The travel dates are from March 17th to March 23rd, 2022. We have a budget of $9,500 to cover all expenses. As for dining preferences, we are particularly fond of American and Chinese cuisines., level: medium, 
+
 Travel Plan:
-Day 1:
-Current City: from Ithaca to Charlotte
-Transportation: Flight Number: F3633413, from Ithaca to Charlotte, Departure Time: 05:38, Arrival Time: 07:46, Cost: 225
-Breakfast: Nagaland's Kitchen, Charlotte, Cost: 73, Cuisines: "Pizza, American, Desserts"
-Attraction: The Charlotte Museum of History, Charlotte
-Lunch: Cafe Maple Street, Charlotte, Cost: 91, Cuisines: "Fast Food, Tea, Italian"
-Dinner: Bombay Vada Pav, Charlotte, Cost: 33, Cuisines: "Desserts, Pizza, Italian, BBQ, Cafe"
-Accommodation: Affordable Spacious Refurbished Room in Bushwick!, Charlotte, Cost: 274, Maximum Occupancy: 1, House Rules: No Visitors, Minimum Nights: 2
+Days: 1, 
+Current City: from St. Louis to San Diego (California), 
+Transportation: Flight Number: F4025732, from St. Louis to San Diego (California), Departure Time: 16:42, Arrival Time: 18:31, cost: 430
+Breakfast: -, 
+Attraction: -, 
+Lunch: -, 
+Dinner: Burgrill, San Diego (California), cost: 54, cuisines: “Desserts, Tea, Pizza, Fast Food, Chinese”
+Accommodation: Spacious Room in Large 2 Bedroom Prewar Apartment, San Diego (California), cost: 585, maximum occupancy: 2, house rules: No parties & No visitors, minimum nights: 1
 
-Number of People = 7
-Total Cost = 7 * 225 + 7 * 73 + 7 * 91 + 7 * 33 + 7 * 274 / 1 = 4872
-Accomodation Minimum Nights: 1/2
- 
-Day 2:
-Current City: Charlotte
-Transportation: -
-Breakfast: Olive Tree Cafe, Charlotte, Cost: 23, Cuisines: “Tea, Chinese, Desserts”
-Attraction: The Mint Museum, Charlotte;Romare Bearden Park, Charlotte.
-Lunch: Birbal Ji Dhaba, Charlotte, Cost: 40, Cuisines: "Cafe, Bakery, Desserts"
-Dinner: Pind Balluchi, Charlotte, Cost: 42, Cuisines: "Pizza, French, Mexican, BBQ, Cafe, Seafood"
-Accommodation: Affordable Spacious Refurbished Room in Bushwick!, Charlotte, Cost: 274, Maximum Occupancy: 1, House Rules: No Visitors, Minimum Nights: 2
+Number of people = 2
+Total cost = (430 + 54) * 2 + 585 = 1,553
+Accommodation minimum nights:  1/1
 
-Number of people = 7
-Total cost = 7 * 23 + 7 *40 + 7 * 42 + 7 * 274 / 1 = 2653
-Accommodation Minimum Nights: 2/2
- 
-Day 3:
-Current City: from Charlotte to Ithaca
-Transportation: Flight Number: F3786167, from Charlotte to Ithaca, Departure Time: 21:42, Arrival Time: 23:26, Cost: 175
-Breakfast: Subway, Charlotte, Cost: 60, Cuisines: "Tea, Cafe, Mexican, Chinese, Seafood"
-Attraction: Books Monument, Charlotte, 
-Lunch: Olive Tree Cafe, Charlotte, Cost: 23, Cuisines: “Tea, Chinese, Desserts”
-Dinner: Kylin Skybar, Charlotte, Cost: 44, Cuisines: "Tea, Cafe, Pizza, Italian"
+Days: 2, 
+Current City: San Diego (California), 
+Transportation: -, 
+Breakfast: Burger King, San Diego (California), cost: 20, cuisines: “Pizza, Italian, French, Fast Food, Seafood”
+Attraction: La Jolla Shores Park, San Diego (California); Skytower, San Diego (California);, 
+Lunch: Gopala, San Diego (California), cost: 98, cuisines: “Pizza, Mexican, BBQ, American, Seafood”
+Dinner: Bikaner Sweets, San Diego (California), cost: 37, cuisines: “Bakery, Pizza, Indian, Fast Food”
+Accommodation: Spacious Room in Large 2 Bedroom Prewar Apartment, San Diego (California), cost: 585, maximum occupancy: 2, house rules: No parties & No visitors, minimum nights: 1
+
+Number of people = 2
+Total cost = (20 + 98 + 37) * 2 +  585 = 895
+Accommodation minimum nights:  2/1
+
+Days: 3, 
+Current City: from San Diego (California) to San Francisco (California), 
+Transportation: Flight Number: F3746772, from San Diego (California) to San Francisco (California), Departure Time: 08:09, Arrival Time: 09:43, cost: 112
+Breakfast: -, 
+Attraction: Golden Gate Park, San Francisco (California); Golden Gate Bridge, San Francisco (California);, 
+Lunch: Bonne Bouche, San Francisco (California), cost: 21, cuisines: “Tea, Chinese, American, Cafe”
+Dinner: Kream's, San Francisco (California), cost: 67, cuisines: “Tea, Pizza, BBQ, Chinese, Seafood”
+Accommodation: Great 1 Bedroom on Upper East, San Francisco (California), cost: 484, maximum occupancy: 2, house rules: No parties, minimum nights: 2
+
+Number of people = 2
+Total cost = (112 + 21 + 67) * 2 + 484 = 884
+Accommodation minimum nights:  1/2
+
+Days: 4, 
+Current City: San Francisco (California), 
+Transportation: -, 
+Breakfast: Coffee & Chai Co., San Francisco (California), cost: 10, cuisines: “Tea, Mexican, BBQ, Cafe, Seafood”
+Attraction: California Academy of Sciences, San Francisco (California); San Francisco Museum of Modern Art, San Francisco (California);, 
+Lunch: Sudarshan, San Francisco (California), cost: 53, cuisines: “Fast Food, Bakery, Mediterranean, Italian”
+Dinner: Green Chick Chop, San Francisco (California), cost: 39, cuisines: “Tea, Pizza, Italian, BBQ, Mediterranean, Seafood”
+Accommodation: Great 1 Bedroom on Upper East, San Francisco (California), cost: 484, maximum occupancy: 2, house rules: No parties, minimum nights: 2
+
+Number of people = 2
+Total cost = (10 + 53 + 39) * 2 + 484 = 688
+Accommodation minimum nights:  2/2
+
+Days: 5, 
+Current City: from San Francisco (California) to Long Beach (California), 
+Transportation: Taxi, from San Francisco (California) to Long Beach (California), duration: 6 hours 15 mins, distance: 652 km, cost: 652, 
+Breakfast: Gupta’s Rasoi, San Francisco (California), cost: 13, cuisines: “Cafe, Bakery, BBQ, Mediterranean”
+Attraction: The Queen Mary, Long Beach (California);, 
+Lunch: -, 
+Dinner: Tsing Tsao South, Long Beach (California), cost: 56, cuisines: “Tea, Cafe, BBQ”
+Accommodation: Cozy Two Bedrooms Home Away From Home Getaway., Long Beach (California), cost: 914, maximum occupancy: 3, house rules: No pets & No children under 10, minimum nights: 2
+
+Number of people = 2
+Total cost = 652 + (13 + 56) * 2 + 914 = 1,704
+Accommodation minimum nights:  1/2
+
+Days: 6, 
+Current City: Long Beach (California), 
+Transportation: -, 
+Breakfast: Winifreds, Long Beach (California), cost: 23, cuisines: “Bakery, BBQ, Fast Food”
+Attraction: Aquarium of the Pacific, Long Beach (California); Rainbow Lagoon Park, Long Beach (California);, 
+Lunch: ChandChini, Long Beach (California), cost: 19, cuisines: “Cafe, Pizza, Desserts, Seafood”
+Dinner: Giuseppe’s Pizza & Italian Specialities, Long Beach (California), cost: 72, cuisines: “Bakery, Fast Food, Cafe, Indian, Mediterranean, Seafood”
+Accommodation: Cozy Two Bedrooms Home Away From Home Getaway., Long Beach (California), cost: 914, maximum occupancy: 3, house rules: No pets & No children under 10, minimum nights: 2
+
+Number of people = 2
+Total cost = (23 + 19 + 72) * 2 + 914 = 1,142
+Accommodation minimum nights:  2/2
+
+Days: 7, 
+Current City: from Long Beach (California) to St. Louis, 
+Transportation: Flight Number: F3986547, from Long Beach (California) to St. Louis, Departure Time: 07:04, Arrival Time: 12:37, cost: 370
+Breakfast: -, 
+Attraction: -, 
+Lunch: -, 
+Dinner: -, 
 Accommodation: -
 
-Number of people = 7
-Total cost = 7 * 175 + 7 * 60 + 7 * 23 + 7 * 44 = 2114
+Number of people = 2
+Total cost = 370 * 4 = 1,480
 
-Total cost across all days = 4872 + 2653 + 2114 = 9639
-Cuisines: The prompt specifies no cuisines, so all cuisines constraints are satisfied.
+Total cost across all days = 1,553 + 895 + 884 + 688 + 1,704 + 1,142 + 1,480 = 8,346
+Cuisines: The prompt specifies American and Chinese, and both of these cuisines have been represented in the restaurants chosen.
 
 ***** Example Ends *****
 
@@ -153,7 +206,7 @@ Breakfast: Nagaland's Kitchen, Charlotte
 Attraction: The Charlotte Museum of History, Charlotte
 Lunch: Cafe Maple Street, Charlotte
 Dinner: Bombay Vada Pav, Charlotte
-Accommodation: Affordable Spacious Refurbished Room in Bushwick!, Charlotte
+Accomodation: Affordable Spacious Refurbished Room in Bushwick!, Charlotte
 
 Day 2:
 Current City: Charlotte
