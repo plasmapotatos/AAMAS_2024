@@ -1,0 +1,26 @@
+{
+    "Delivery Rate": {
+        "mean": NaN,
+        "std_dev": NaN
+    },
+    "Commonsense Constraint Micro Pass Rate": {
+        "mean": NaN,
+        "std_dev": NaN
+    },
+    "Commonsense Constraint Macro Pass Rate": {
+        "mean": NaN,
+        "std_dev": NaN
+    },
+    "Hard Constraint Micro Pass Rate": {
+        "mean": NaN,
+        "std_dev": NaN
+    },
+    "Hard Constraint Macro Pass Rate": {
+        "mean": NaN,
+        "std_dev": NaN
+    },
+    "Final Pass Rate": {
+        "mean": NaN,
+        "std_dev": NaN
+    }
+}

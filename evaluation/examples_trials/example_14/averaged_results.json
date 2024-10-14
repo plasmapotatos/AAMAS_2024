@@ -1,0 +1,26 @@
+{
+    "Delivery Rate": {
+        "mean": 1.0,
+        "std_dev": 0.0
+    },
+    "Commonsense Constraint Micro Pass Rate": {
+        "mean": 0.6790404040404041,
+        "std_dev": 0.09998369771974477
+    },
+    "Commonsense Constraint Macro Pass Rate": {
+        "mean": 0.10808080808080806,
+        "std_dev": 0.062016418138775085
+    },
+    "Hard Constraint Micro Pass Rate": {
+        "mean": 0.15,
+        "std_dev": 0.1014124125900502
+    },
+    "Hard Constraint Macro Pass Rate": {
+        "mean": 0.09747474747474749,
+        "std_dev": 0.06188053895958223
+    },
+    "Final Pass Rate": {
+        "mean": 0.0303030303030303,
+        "std_dev": 0.02001173005672621
+    }
+}

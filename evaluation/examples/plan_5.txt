@@ -1,0 +1,44 @@
+Query: Please provide me with a travel plan that departs from Las Vegas to Denver for 3 days, from March 12th to March 14th, 2022. The budget for this solo trip is $1,600.
+
+Travel Plan:
+
+Days: 1
+Current City: from Las Vegas, Nevada to Denver
+Transportation: Self-driving, from Las Vegas, Nevada to Denver, duration: 10 hours 54 mins, distance: 1,204 km, cost: 60
+Breakfast: -
+Attraction: -
+Lunch: -
+Dinner: The Fatty Bao - Asian Gastro Bar, Denver, cost: 93, cuisines: Bakery, BBQ, Cafe, Indian, Seafood
+Accommodation: Peaceful, beautiful home away, Denver, cost: 414, maximum occupancy: 4, house rules: No smoking, No visitors, No parties, minimum nights: 2
+
+Number of people: 1
+Total cost: 60 x 1 + 93 x 1 + 414 x 1 = 567
+Accommodation minimum nights: 1/2
+
+Days: 2
+Current City: Denver
+Transportation: -
+Breakfast: Starve Stalkers, Denver, cost: 31, cuisines: Fast Food, Indian, BBQ, Seafood
+Attraction: Denver Botanic Gardens, Denver; Historic Elitch Carousel Dome, Denver
+Lunch: TBH - The Big House Cafe, Denver, cost: 22, cuisines: Cafe, Indian, Seafood, Fast Food
+Dinner: Radhika Sweets, Denver, cost: 26, cuisines: Tea, Fast Food, Cafe, Mediterranean, Seafood
+Accommodation: Peaceful, beautiful home away, Denver, cost: 414, maximum occupancy: 4, house rules: No smoking, No visitors, No parties, minimum nights: 2
+
+Number of people: 1
+Total cost: 31 x 1 + 22 x 1 + 26 x 1 + 414 x 1 = 493
+Accommodation minimum nights: 2/2
+
+Days: 3
+Current City: from Denver to Las Vegas
+Transportation: Self-driving from Denver to Las Vegas, duration: 10 hours 57 mins, distance: 1,205 km, cost: 60
+Breakfast: Rain Tree Grill, Denver, cost: 94, cuisines: Tea, Mexican, BBQ, Italian
+Attraction: -
+Lunch: -
+Dinner: -
+Accommodation: -
+
+Number of people: 1
+Total cost: 60 x 1 + 94 x 1 = 154
+
+Total cost across all days: 567 x 1 + 493 x 1 + 154 x 1 = 1,214
+Cuisines: The prompt specifies no cuisines, so all cuisine constraints are satisfied

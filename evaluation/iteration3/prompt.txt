@@ -1,0 +1,262 @@
+You are a proficient planner. You are given a travel planning query reference information for the travel plan in CSV format. Your task is to output the travel plan. Additionally, follow the following constraints:
+1. Ensure the travel plan includes specifics such as flight numbers (e.g., F0123456), restaurant names, and hotel names.
+2. Derive all information in the travel plan from the provided reference information, adhering strictly to the format given in the example.
+3. Verify that the city sequence starts and ends in the same city to form a closed circle.
+4. Confirm that every city in the sequence appears consecutively without reappearing once its sequence is over, except for the starting and ending city.
+5. Validate that all listed cities are real and mapped to their correct states using the city-state map.
+6. Include all required details: transportation, breakfast, lunch, dinner, attractions, and accommodation for each day of the trip.
+7. Ensure no restaurant name is repeated for breakfast, lunch, or dinner across the days.
+8. Verify no attraction is repeated on different days.
+9. Avoid conflicting transportation methods; for example, do not mix "Self-driving" with "Flight" or "Taxi" with "Self-driving".
+10. Ensure the transportation method listed each day corresponds correctly to the specified cities.
+11. Validate that the city in the current day matches the city listed in meals and attractions.
+12. Confirm that each day’s accommodation matches the final city listed for that day.
+13. Ensure the number of visiting cities matches the specified visiting city number in the query.
+14. Verify the number of days in the plan matches the specified number of days in the query.
+15. Include sufficient information such that at least 50% of required details (transportation, meals, attractions, accommodation) are provided for each day.
+16. Include only valid transportation modes that meet the constraints specified in the query.
+17. Avoid using prohibited transportation types such as flights if "no flight" is a constraint.
+18. Ensure accommodations adhere to the specified room type constraints. For example, if "not shared room" is specified, avoid booking shared rooms.
+19. Adhere to the house rules specified in the query. Avoid accommodations that do not meet rules such as "no smoking," "no parties," or "no pets."
+20. Select restaurants that offer the specified cuisines in the query. Ensure that the chosen restaurants match the required cuisine types.
+21. Ensure the total cost of the travel plan does not exceed the specified budget in the query. 22. Include costs for transportation, meals, and accommodations.
+23. When listing meals (breakfast, lunch, dinner), ensure the selected restaurants are valid and within the destination city, avoiding the origin city unless specified otherwise.
+24. Validate the availability and details of all flights, accommodations, and restaurants to ensure accuracy and feasibility within the travel dates and locations.
+25. Maintain consistency and accuracy in city names and other relevant location information to ensure proper validation by the evaluation script.
+***** Example 1 *****
+Query: I need help crafting a 7-day travel plan for two individuals, departing from St. Louis and intending to visit 3 separate cities in California. The travel dates are from March 17th to March 23rd, 2022. We have a budget of $9,500 to cover all expenses. As for dining preferences, we are particularly fond of American and Chinese cuisines., level: medium,
+
+
+Travel Plan:
+Days: 1,
+Current City: from St. Louis to San Diego (California),
+Transportation: Flight Number: F4025732, from St. Louis to San Diego (California), Departure Time: 16:42, Arrival Time: 18:31, cost: 430
+Breakfast: -,
+Attraction: -,
+Lunch: -,
+Dinner: Burgrill, San Diego (California), cost: 54, cuisines: “Desserts, Tea, Pizza, Fast Food, Chinese”
+Accommodation: Spacious Room in Large 2 Bedroom Prewar Apartment, San Diego (California), cost: 585, maximum occupancy: 2, house rules: No parties & No visitors, minimum nights: 1
+
+
+Number of people = 2
+Total cost = (430 + 54) * 2 + 585 = 1,553
+Accommodation minimum nights:  1/1
+
+
+Days: 2,
+Current City: San Diego (California),
+Transportation: -,
+Breakfast: Burger King, San Diego (California), cost: 20, cuisines: “Pizza, Italian, French, Fast Food, Seafood”
+Attraction: La Jolla Shores Park, San Diego (California); Skytower, San Diego (California);,
+Lunch: Gopala, San Diego (California), cost: 98, cuisines: “Pizza, Mexican, BBQ, American, Seafood”
+Dinner: Bikaner Sweets, San Diego (California), cost: 37, cuisines: “Bakery, Pizza, Indian, Fast Food”
+Accommodation: Spacious Room in Large 2 Bedroom Prewar Apartment, San Diego (California), cost: 585, maximum occupancy: 2, house rules: No parties & No visitors, minimum nights: 1
+
+
+Number of people = 2
+Total cost = (20 + 98 + 37) * 2 +  585 = 895
+Accommodation minimum nights:  2/1
+
+
+Days: 3,
+Current City: from San Diego (California) to San Francisco (California),
+Transportation: Flight Number: F3746772, from San Diego (California) to San Francisco (California), Departure Time: 08:09, Arrival Time: 09:43, cost: 112
+Breakfast: -,
+Attraction: Golden Gate Park, San Francisco (California); Golden Gate Bridge, San Francisco (California);,
+Lunch: Bonne Bouche, San Francisco (California), cost: 21, cuisines: “Tea, Chinese, American, Cafe”
+Dinner: Kream's, San Francisco (California), cost: 67, cuisines: “Tea, Pizza, BBQ, Chinese, Seafood”
+Accommodation: Great 1 Bedroom on Upper East, San Francisco (California), cost: 484, maximum occupancy: 2, house rules: No parties, minimum nights: 2
+
+
+Number of people = 2
+Total cost = (112 + 21 + 67) * 2 + 484 = 884
+Accommodation minimum nights:  1/2
+
+
+Days: 4,
+Current City: San Francisco (California),
+Transportation: -,
+Breakfast: Coffee & Chai Co., San Francisco (California), cost: 10, cuisines: “Tea, Mexican, BBQ, Cafe, Seafood”
+Attraction: California Academy of Sciences, San Francisco (California); San Francisco Museum of Modern Art, San Francisco (California);,
+Lunch: Sudarshan, San Francisco (California), cost: 53, cuisines: “Fast Food, Bakery, Mediterranean, Italian”
+Dinner: Green Chick Chop, San Francisco (California), cost: 39, cuisines: “Tea, Pizza, Italian, BBQ, Mediterranean, Seafood”
+Accommodation: Great 1 Bedroom on Upper East, San Francisco (California), cost: 484, maximum occupancy: 2, house rules: No parties, minimum nights: 2
+
+
+Number of people = 2
+Total cost = (10 + 53 + 39) * 2 + 484 = 688
+Accommodation minimum nights:  2/2
+
+
+Days: 5,
+Current City: from San Francisco (California) to Long Beach (California),
+Transportation: Taxi, from San Francisco (California) to Long Beach (California), duration: 6 hours 15 mins, distance: 652 km, cost: 652,
+Breakfast: Gupta’s Rasoi, San Francisco (California), cost: 13, cuisines: “Cafe, Bakery, BBQ, Mediterranean”
+Attraction: The Queen Mary, Long Beach (California);,
+Lunch: -,
+Dinner: Tsing Tsao South, Long Beach (California), cost: 56, cuisines: “Tea, Cafe, BBQ”
+Accommodation: Cozy Two Bedrooms Home Away From Home Getaway., Long Beach (California), cost: 914, maximum occupancy: 3, house rules: No pets & No children under 10, minimum nights: 2
+
+
+Number of people = 2
+Total cost = 652 + (13 + 56) * 2 + 914 = 1,704
+Accommodation minimum nights:  1/2
+
+
+Days: 6,
+Current City: Long Beach (California),
+Transportation: -,
+Breakfast: Winifreds, Long Beach (California), cost: 23, cuisines: “Bakery, BBQ, Fast Food”
+Attraction: Aquarium of the Pacific, Long Beach (California); Rainbow Lagoon Park, Long Beach (California);,
+Lunch: ChandChini, Long Beach (California), cost: 19, cuisines: “Cafe, Pizza, Desserts, Seafood”
+Dinner: Giuseppe’s Pizza & Italian Specialities, Long Beach (California), cost: 72, cuisines: “Bakery, Fast Food, Cafe, Indian, Mediterranean, Seafood”
+Accommodation: Cozy Two Bedrooms Home Away From Home Getaway., Long Beach (California), cost: 914, maximum occupancy: 3, house rules: No pets & No children under 10, minimum nights: 2
+
+
+Number of people = 2
+Total cost = (23 + 19 + 72) * 2 + 914 = 1,142
+Accommodation minimum nights:  2/2
+
+
+Days: 7,
+Current City: from Long Beach (California) to St. Louis,
+Transportation: Flight Number: F3986547, from Long Beach (California) to St. Louis, Departure Time: 07:04, Arrival Time: 12:37, cost: 370
+Breakfast: -,
+Attraction: -,
+Lunch: -,
+Dinner: -,
+Accommodation: -
+
+
+Number of people = 2
+Total cost = 370 * 4 = 1,480
+
+
+Total cost across all days = 1,553 + 895 + 884 + 688 + 1,704 + 1,142 + 1,480 = 8,346
+Cuisines: The prompt specifies American and Chinese, and both of these cuisines have been represented in the restaurants chosen.
+
+
+***** Example Ends *****
+
+***** Example 2 *****
+Query: Can you create a 5-day travel itinerary for a group of 3, departing from Atlanta and visiting 2 cities in Minnesota from March 3rd to March 7th, 2022? We have a budget of $8000. We require accommodations that allow parties and should ideally be entire rooms. Although we don't plan to self-drive, we would like the flexibility to host parties
+
+Travel Plan:
+Days: 1, 
+Current City: from Atlanta to Bemidji(Minnesota) 
+Transportation: Taxi, from Atlanta to Bemidji(Minnesota), duration: 19 hours 51 mins, distance: 2,166 km, cost: 2166
+Breakfast: -, 
+Attraction: -, 
+Lunch: -, 
+Dinner: Pig and Whistle, Bemidji(Minnesota), cost: 39, cuisines: “Fast Food, Mexican, Bakery, Seafood”
+Accommodation: A beautiful Cozy 1 BR Apartment., Bemidji(Minnesota), cost: 198, maximum occupancy: 2, house rules: No children under 10, minimum nights: 2
+
+Number of people = 3
+Total cost = 2166 * 3 / 4 + 3 * 39 + 198 * 3 / 2 = 2679
+Accommodation minimum nights:  1/2
+
+Days: 2, 
+Current City: Bemidji(Minnesota), 
+Transportation: -
+Breakfast: The Chocolate Haven, Bemidji(Minnesota), cost: 23, cuisines: “Desserts, Tea, Italian, BBQ, Fast Food, Chinese"
+attraction: Chief Bemidji Statue, Bemidji(Minnesota);Shaynowishkung Statue, Bemidji(Minnesota),
+Lunch: Bhaja Govindam, Bemidji(Minnesota), cost: 33, cuisines: “Fast Food, Pizza, Desserts, Seafood"
+Dinner: Cafe Coffee Day, Bemidji(Minnesota), cost: 36, cuisines: “Tea, Chinese, Fast Food"
+Accommodation: A beautiful Cozy 1 BR Apartment., Bemidji(Minnesota), cost: 198, maximum occupancy: 2, house rules: No children under 10, minimum nights: 2
+
+Number of people = 3
+Total cost = 3 x 23 + 3 x 33 + 3 x 36 + 198 * 3 / 2 = 672
+Accommodation minimum nights:  2/2 (Done!)
+
+Days: 3, 
+Current City: from Bemidji(Minnesota) to Minneapolis(Minnesota)
+Transportation: Taxi, from Bemidji(Minnesota) to Minneapolis(Minnesota), duration: 3 hours 34 mins, distance: 347 km, cost: 347
+Breakfast: Right for Night, Bemidji(Minnesota), cost: 10, Cuisines: “Desserts, Pizza, BBQ, American, Seafood”
+Attraction: Minneapolis Institute of Art, Minneapolis(Minnesota); 
+Lunch: Jeet Pizza, Minneapolis(Minnesota), cost: 68, Cuisines: “Tea, Desserts”
+Dinner: Puri Bakers, Minneapolis(Minnesota), cost: 85, Cuisines: “Pizza, Bakery, Italian”
+Accommodation: Light-filled Apartment in great area, close 2 all!, Minneapolis(Minnesota), cost: 343, maximum occupancy: 2, house rules: No visitors, minimum nights: 1
+
+Number of people = 3
+Total cost = 347 * 3 / 4 + 3 * 10 + 3 * 68 + 3 * 85 + 343 * 3 / 2 = 1522
+Accommodation minimum nights:  1/1 (Done!)
+
+Days: 4, 
+Current City: Minneapolis(Minnesota), 
+transportation: -, 
+Breakfast: Texas Roadhouse, Minneapolis(Minnesota), cost: 22, cuisines: “Cafe, Pizza, BBQ, Desserts”
+Attraction: Minnehaha Falls, Minneapolis(Minnesota);Prospect Park Water Tower, Minneapolis(Minnesota);, 
+Lunch: Monkeypod Kitchen by Merriman, Minneapolis(Minnesota), cost: 59, cuisines: "Desserts, Pizza, Bakery, Fast Food, Indian, Mediterranean"
+Dinner: Balbeer's Kitchen & Bar, Minneapolis(Minnesota), cost: 81, cuisines: “Tea, Chinese, Bakery”
+Accommodation: Light-filled Apartment in great area, close 2 all!, Minneapolis(Minnesota), cost: 343, maximum occupancy: 2, house rules: No visitors, minimum nights: 1
+
+Number of people = 3
+Total cost = 3 * 22 + 3 * 59 + 3 * 81 + 343 * 3 / 2 = 1172
+Accommodation minimum nights:  2/1
+
+Days: 5, 
+Current City: from Minneapolis(Minnesota) to Atlanta, 
+Transportation: Taxi, from Minneapolis(Minnesota) to Atlanta, duration: 16 hours 18 mins, distance: 1,814 km, cost: 1814, 
+Breakfast: The Cafe, Minneapolis(Minnesota), cost: 14, cuisines: "Indian, Mediterranean, Desserts, Seafood"
+Attraction: -
+Lunch: -
+Dinner: -
+Accommodation: -
+
+Number of people = 3
+Total cost = 1814 * 3 / 4 + 3 * 14 = 1856
+
+Total cost across all day = 2679 + 672 + 1522 + 1172 + 1856 = 7901
+Cuisines: The prompt specifies no cuisines, so all cuisine constraints are satisfied
+House rules: All accommodations chosen do not disallow parties, so parties are allowed.
+
+***** Example Ends *****
+
+***** Example 3 *****
+Query: Please provide me with a travel plan that departs from Las Vegas to Denver for 3 days, from March 12th to March 14th, 2022. The budget for this solo trip is $1,600., 
+
+Days: 1, 
+Current City: from Las Vegas(Nevada) to Denver, 
+Transportation: Self-driving, from Las Vegas(Nevada) to Denver, duration: 10 hours 54 mins, distance: 1204 km, cost: 60
+Breakfast: -, 
+Attraction: - 
+Lunch: -
+Dinner: The Fatty Bao - Asian Gastro Bar, Denver, cost: 93, cuisines: “Bakery, BBQ, Cafe, Indian, Seafood”
+Accomodation: Peaceful, beautiful home away , Denver, cost: 414, maximum occupancy: 4, house rules: “No smoking & No visitors & No parties”, minimum nights: 2
+
+Number of people = 1
+Total cost = 1 x 60 + 1 x 93 + 1 x 414 = 567
+Accomodation minimum nights:  1/2
+
+Days: 2, 
+Current City: Denver, 
+Transportation: -, 
+Breakfast: Starve Stalkers, Denver, cost: 31, cuisines: “Fast Food, Indian, BBQ, Seafood”
+Attraction: Denver Botanic Gardens, Denver;Historic Elitch Carousel Dome, Denver, 
+Lunch: TBH - The Big House Cafe, Denver, cost: 22, cuisines: “Cafe, Indian, Seafood, Fast Food”
+Dinner: Radhika Sweets, Denver, cost: 26, cuisines: “Tea, Fast Food, Cafe, Mediterranean, Seafood”
+Accomodation: Peaceful, beautiful home away , Denver, cost: 414, maximum occupancy: 4, house rules: “No smoking & No visitors & No parties”, minimum nights: 2
+
+Number of people = 1
+Total cost = 1 x 31 + 1 x 22 + 1 x 26 + 1 x 414 = 493
+Accomodation minimum nights:  2/2
+
+Days: 3, 
+Current City: from Denver to Las Vegas, 
+Transportation: Self-driving from Denver to Las Vegas, duration: 10 hours 57 mins, distance: 1205 km, cost: 60
+Breakfast: "Rain Tree Grill, Denver", cost: 94, cuisines: “Tea, Mexican, BBQ, Italian”
+Attraction: - 
+Lunch: -
+Dinner: -
+Accomodation: -
+
+Number of people = 1
+Total cost = 1 x 60 + 1 x 94 = 154
+
+Total cost across all day = 1 x 154 + 1 x 493 + 1 x 567 = 1214
+Cuisines: The prompt specifies no cuisines, so all cuisines constraints are satisfied
+***** Example Ends *****
+
+Given information: {text}
+Query: {query}
+Travel Plan:

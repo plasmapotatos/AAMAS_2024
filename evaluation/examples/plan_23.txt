@@ -1,0 +1,70 @@
+Query: "Can you help create a 5-day travel itinerary for a group of 7, departing from San Jose and covering 2 cities in Idaho, from March 1st to March 5th, 2022? We have a budget of $13,900. We'd love to try Indian and French cuisine on our journey."
+
+Travel Plan:
+
+Days: 1
+Current City: from San Jose to Boise (Idaho)
+Transportation: Flight Number: F3937562, from San Jose to Boise (Idaho), Departure Time: 14:01, Arrival Time: 16:28, cost: 260
+Breakfast: -
+Attraction: Zoo Boise, Boise (Idaho)
+Lunch: -
+Dinner: Apna Punjabi Zayka, Boise (Idaho), cost: 95, cuisines: Cafe, French, BBQ, Mediterranean
+Accommodation: Duplex 5 BR apartment in a historic brownstone, Boise (Idaho), cost: 273.0, maximum occupancy: 2, house rules: No children under 10 & No pets, minimum nights: 2.0
+
+Number of people: 7
+Total cost: 7 x 260 + 7 x 95 + 273 x 7 / 2 = 3577
+Accommodation minimum nights: 1/2
+
+Days: 2
+Current City: Boise (Idaho)
+Transportation: -
+Breakfast: Blooms - Eros Hotel, Boise (Idaho), cost: 72, cuisines: Desserts, Tea, Bakery, Indian, Seafood
+Attraction: Camels Back Park, Boise (Idaho); Basque Museum and Cultural Center, Boise (Idaho); Kathryn Albertson Park, Boise (Idaho)
+Lunch: Goodies - Snacks N More, Boise (Idaho), cost: 83, cuisines: French, Desserts, Seafood
+Dinner: Greenvich, Boise (Idaho), cost: 95, cuisines: Tea, Fast Food, Indian, Seafood
+Accommodation: Duplex 5 BR apartment in a historic brownstone, Boise (Idaho), cost: 273.0, maximum occupancy: 2, house rules: No children under 10 & No pets, minimum nights: 2.0
+
+Number of people: 7
+Total cost: 7 x 72 + 7 x 83 + 7 x 95 + 273 x 7 / 2 = 2842
+Accommodation minimum nights: 2/2
+
+Days: 3
+Current City: from Boise (Idaho) to Idaho Falls (Idaho)
+Transportation: Taxi, from Boise (Idaho) to Idaho Falls (Idaho), duration: 4 hours 1 min, distance: 451 km, cost: 451
+Breakfast: Gopala Hari, Boise (Idaho), cost: 28, cuisines: Tea, Pizza, Italian, Fast Food, Mediterranean, Seafood
+Attraction: Giant Eagle Waterfall Nest, Idaho Falls (Idaho); Museum of Idaho, Idaho Falls (Idaho); Eagle Rock Fountain, Idaho Falls (Idaho)
+Lunch: Fresh n Frozen, Idaho Falls (Idaho), cost: 31, cuisines: French, Bakery, Mediterranean, Seafood
+Dinner: Le Swaadik, Idaho Falls (Idaho), cost: 31, cuisines: Tea, Pizza, French, Bakery, Fast Food
+Accommodation: Perfect Williamsburg Summer Haven, Idaho Falls (Idaho), cost: 250.0, maximum occupancy: 3, house rules: No pets, minimum nights: 2.0
+
+Number of people: 7
+Total cost: 7 x 28 + 7 x 31 + 7 x 31 + 250 x 7 / 3 = 1380
+Accommodation minimum nights: 1/2
+
+Days: 4
+Current City: Idaho Falls (Idaho)
+Transportation: -
+Breakfast: Karim’s, Idaho Falls (Idaho), cost: 44, cuisines: Pizza, Indian, BBQ, Cafe, American
+Attraction: Reinhart Park, Idaho Falls (Idaho); Mini Golden Gate Bridge, Idaho Falls (Idaho)
+Lunch: Charu Nanda’s Home Baked Cakes, Idaho Falls (Idaho), cost: 78, cuisines: Tea, Bakery, BBQ, Indian, Seafood
+Dinner: Chinese X’Press, Idaho Falls (Idaho), cost: 79, cuisines: French, Desserts, Fast Food
+Accommodation: Perfect Williamsburg Summer Haven, Idaho Falls (Idaho), cost: 250.0, maximum occupancy: 3, house rules: No pets, minimum nights: 2.0
+
+Number of people: 7
+Total cost: 7 x 44 + 7 x 78 + 7 x 79 + 250 x 7 / 3 = 2157
+Accommodation minimum nights: 2/2
+
+Days: 5
+Current City: from Idaho Falls (Idaho) to San Jose
+Transportation: Taxi, from Idaho Falls (Idaho) to San Jose, duration: 12 hours 52 mins, distance: 1,387 km, cost: 1387
+Breakfast: Taste of China, Idaho Falls (Idaho), cost: 91, cuisines: Tea, Seafood, Bakery, Fast Food
+Attraction: -
+Lunch: -
+Dinner: -
+Accommodation: -
+
+Number of people: 7
+Total cost: 7 x 91 + 1387 x 7 / 4 = 3413
+
+Total cost across all days: 3577 + 2842 + 1380 + 2157 + 3413 = 13369
+Cuisines: The prompt specifies Indian and French, so all cuisine constraints are satisfied.

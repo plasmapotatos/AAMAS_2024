@@ -1,0 +1,121 @@
+{
+    "plans": [
+        {
+            "query": "Please help me plan a trip from St. Petersburg to Rockford spanning 3 days from March 16th to March 18th, 2022. The travel should be planned for a single person with a budget of $1,700.",
+            "travel_plan": [
+                {
+                    "day": 1,
+                    "current_city": "from St. Petersburg to Rockford",
+                    "transportation": {
+                        "type": "Flight",
+                        "details": {
+                            "number": "F3573659",
+                            "from": "St. Petersburg",
+                            "to": "Rockford",
+                            "departure_time": "15:40",
+                            "arrival_time": "17:04",
+                            "cost": 474
+                        }
+                    },
+                    "meals": {
+                        "breakfast": "-",
+                        "lunch": "-",
+                        "dinner": {
+                            "location": "Flying Mango, Rockford",
+                            "cost": 20,
+                            "cuisines": "American, BBQ, Seafood"
+                        }
+                    },
+                    "accommodation": {
+                        "type": "Private Room in a two bedroom apt.",
+                        "location": "Rockford",
+                        "cost": 210,
+                        "maximum_occupancy": 2,
+                        "house_rules": "No visitors & No smoking",
+                        "minimum_nights": 1
+                    },
+                    "number_of_people": 1,
+                    "total_cost": 704,
+                    "attractions": "-"
+                },
+                {
+                    "day": 2,
+                    "current_city": "Rockford",
+                    "transportation": "-",
+                    "meals": {
+                        "breakfast": {
+                            "location": "Grappa - Shangri-Las - Eros Hotel, Rockford",
+                            "cost": 21,
+                            "cuisines": "Bakery, Desserts, Italian"
+                        },
+                        "lunch": {
+                            "location": "Gajalee Sea Food, Rockford",
+                            "cost": 49,
+                            "cuisines": "Bakery, BBQ"
+                        },
+                        "dinner": {
+                            "location": "Aroma Rest O Bar, Rockford",
+                            "cost": 58,
+                            "cuisines": "Bakery, Fast Food, Chinese, American, Seafood"
+                        }
+                    },
+                    "accommodation": {
+                        "type": "Private Room in a two bedroom apt.",
+                        "location": "Rockford",
+                        "cost": 210,
+                        "maximum_occupancy": 2,
+                        "house_rules": "No visitors & No smoking",
+                        "minimum_nights": 1
+                    },
+                    "number_of_people": 1,
+                    "total_cost": 338,
+                    "attractions": [
+                        "Anderson Japanese Gardens, Rockford",
+                        "Midway Village Museum, Rockford"
+                    ]
+                },
+                {
+                    "day": 3,
+                    "current_city": "from Rockford to St. Petersburg",
+                    "transportation": {
+                        "type": "Flight",
+                        "details": {
+                            "number": "F3573120",
+                            "from": "Rockford",
+                            "to": "St. Petersburg",
+                            "departure_time": "19:00",
+                            "arrival_time": "22:43",
+                            "cost": 346
+                        }
+                    },
+                    "meals": {
+                        "breakfast": {
+                            "location": "Dial A Cake, Rockford",
+                            "cost": 29,
+                            "cuisines": "Cafe, American, Mediterranean, Desserts"
+                        },
+                        "lunch": {
+                            "location": "Subway, Rockford",
+                            "cost": 26,
+                            "cuisines": "Bakery, Pizza, BBQ, Desserts"
+                        },
+                        "dinner": {
+                            "location": "Moets Arabica, Rockford",
+                            "cost": 43,
+                            "cuisines": "Tea, Bakery, Indian, Fast Food"
+                        }
+                    },
+                    "accommodation": "-",
+                    "number_of_people": 1,
+                    "total_cost": 444,
+                    "attractions": [
+                        "Ethnic Heritage Museum, Rockford",
+                        "Blackhawk Springs Forest Preserve, Rockford"
+                    ]
+                }
+            ],
+            "total_cost_all_days": 1486,
+            "cuisines_constraints_satisfied": true
+        }
+    ]
+}

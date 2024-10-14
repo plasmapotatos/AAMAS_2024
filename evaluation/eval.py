@@ -87,6 +87,14 @@ def eval_score(validation_or_test: str, file_path: str):
         query_data_list = load_dataset(
             "osunlp/TravelPlanner", "validation", download_mode="force_redownload"
         )["validation"]
+    if validation_or_test == "test":
+        query_data_list = load_dataset(
+            "osunlp/TravelPlanner", "test", download_mode="force_redownload"
+        )["test"]
+    if validation_or_test == "train":
+        query_data_list = load_dataset(
+            "osunlp/TravelPlanner", "train", download_mode="force_redownload"
+        )["train"]
 
     query_data_list = [x for x in query_data_list]
     hardConstraint_statistic = {
@@ -294,7 +302,8 @@ def eval_score(validation_or_test: str, file_path: str):
     final_commonsense_cnt = 0
     final_hardConstraint_cnt = 0
     final_all_cnt_map = {level: 0 for level in ["easy", "medium", "hard"]}
-    json.dump(plan_constraint_store, open("data_record.json", "w"))
+    #print("plan_constraint_store: ", plan_constraint_store)
+    print("hard constraint: ", hardConstraint_statistic_processed)
     for idx in range(0, len(query_data_list)):
         if plan_constraint_store[idx]["commonsense_constraint"]:
             final_commonsense_pass = True
@@ -359,6 +368,21 @@ def eval_score(validation_or_test: str, file_path: str):
         )
         result["Hard Constraint Macro Pass Rate"] = final_hardConstraint_cnt / 1000
         result["Final Pass Rate"] = final_all_cnt / 1000
+
+    elif validation_or_test == "train":
+        result["Delivery Rate"] = delivery_cnt / 45
+        result["Commonsense Constraint Micro Pass Rate"] = (
+            constraint_dis_record["commonsense"]["pass"] / 360
+        )
+        result["Commonsense Constraint Macro Pass Rate"] = final_commonsense_cnt / 45
+        result["Hard Constraint Micro Pass Rate"] = (
+            constraint_dis_record["hard"]["pass"] / 105
+        )
+        result["Hard Constraint Macro Pass Rate"] = final_hardConstraint_cnt / 45
+        result["Final Pass Rate"] = final_all_cnt / 45
+
+    json.dump(plan_constraint_store, open("data_record.json", "w"))
+    json.dump(result, open("final_result.json", "w"))
 
     return result, {
         "Commonsense Constraint": remap_commonsense_constraint_record,

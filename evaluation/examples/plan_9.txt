@@ -1,0 +1,70 @@
+Query: Can you devise a travel plan that departs from Memphis and includes 2 cities in Pennsylvania? The trip is scheduled for 5 days from March 22nd to March 26th, 2022. The trip's total budget is $1,400.
+
+Travel Plan:
+
+Days: 1
+Current City: from Memphis to State College, Pennsylvania
+Transportation: Self-driving, from Memphis to State College, Pennsylvania, duration: 13 hours 41 mins, distance: 1,459 km, cost: 72
+Breakfast: -
+Attraction: -
+Lunch: -
+Dinner: Qureshi's Kabab Corner, State College, Pennsylvania, cost: 60, cuisines: Desserts, Tea, Italian, BBQ, Mediterranean
+Accommodation: Small and Cozy room on Upper West Side, State College, Pennsylvania, cost: 269, maximum occupancy: 1, house rules: No parties, minimum nights: 1
+
+Number of people: 1
+Total cost: 72 x 1 + 60 x 1 + 269 x 1 = 401
+Accommodation minimum nights: 1/1
+
+Days: 2
+Current City: State College, Pennsylvania
+Transportation: -
+Breakfast: The Tuck Shop, State College, Pennsylvania, cost: 20, cuisines: Bakery, BBQ, Mediterranean
+Attraction: The Arboretum at Penn State, State College, Pennsylvania; Tom Tudek Memorial Park, State College, Pennsylvania
+Lunch: Los Agaves, State College, Pennsylvania, cost: 39, cuisines: French, BBQ, Cafe
+Dinner: Maharaja Food Club, State College, Pennsylvania, cost: 14, cuisines: Desserts, Indian, BBQ
+Accommodation: Small and Cozy room on Upper West Side, State College, Pennsylvania, cost: 269, maximum occupancy: 1, house rules: No parties, minimum nights: 1
+
+Number of people: 1
+Total cost: 20 x 1 + 39 x 1 + 14 x 1 + 269 x 1 = 342
+Accommodation minimum nights: 2/1
+
+Days: 3
+Current City: from State College, Pennsylvania to Johnstown, Pennsylvania
+Transportation: Self-driving, from State College, Pennsylvania to Johnstown, Pennsylvania, duration: 1 hour 29 mins, distance: 137 km, cost: 6
+Breakfast: Hotel Ekant, State College, Pennsylvania, cost: 16, cuisines: Fast Food, Pizza, Italian
+Attraction: Greenhouse Park, Johnstown, Pennsylvania; Conemaugh Gap Scenic Overlook, Johnstown, Pennsylvania
+Lunch: Pita Pan, Johnstown, Pennsylvania, cost: 40, cuisines: Mexican, Pizza, Indian, Fast Food
+Dinner: Desi Vibes, Johnstown, Pennsylvania, cost: 18, cuisines: Mexican, BBQ, Pizza
+Accommodation: 2 Bedroom Apartment East Village Amazing Location, Johnstown, Pennsylvania, cost: 158, maximum occupancy: 3, house rules: No pets, minimum nights: 2
+
+Number of people: 1
+Total cost: 6 x 1 + 16 x 1 + 40 x 1 + 18 x 1 + 158 x 1 = 238
+Accommodation minimum nights: 1/2
+
+Days: 4
+Current City: Johnstown, Pennsylvania
+Transportation: -
+Breakfast: Palmshore, Johnstown, Pennsylvania, cost: 61, cuisines: Bakery, American, BBQ, Fast Food
+Attraction: Sandyvale Memorial Gardens and Conservancy, Johnstown, Pennsylvania; I Love Johnstown Mural, Johnstown, Pennsylvania
+Lunch: Burger Dominion, Johnstown, Pennsylvania, cost: 83, cuisines: Tea, Pizza, French, Cafe, Mediterranean
+Dinner: Daawat-e-Mehak, Johnstown, Pennsylvania, cost: 51, cuisines: Tea, French, Pizza
+Accommodation: 2 Bedroom Apartment East Village Amazing Location, Johnstown, Pennsylvania, cost: 158, maximum occupancy: 3, house rules: No pets, minimum nights: 2
+
+Number of people: 1
+Total cost: 61 x 1 + 83 x 1 + 51 x 1 + 158 x 1 = 353
+Accommodation minimum nights: 2/2
+
+Days: 5
+Current City: from Johnstown, Pennsylvania to Memphis
+Transportation: Self-driving, from Johnstown, Pennsylvania to Memphis, duration: 12 hours 39 mins, distance: 1,348 km, cost: 67
+Breakfast: Wah Ji Wah, Johnstown, Pennsylvania, cost: 35, cuisines: Tea, French, American, Seafood
+Attraction: -
+Lunch: -
+Dinner: -
+Accommodation: -
+
+Number of people: 1
+Total cost: 67 x 1 + 35 x 1 = 102
+
+Total cost across all days: 401 x 1 + 342 x 1 + 238 x 1 + 353 x 1 + 102 x 1 = 1,436
+Cuisines: The prompt specifies no cuisines, so all cuisine constraints are satisfied

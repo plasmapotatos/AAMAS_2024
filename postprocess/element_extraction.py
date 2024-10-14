@@ -28,6 +28,8 @@ if __name__ == '__main__':
         query_data_list  = load_dataset('osunlp/TravelPlanner','validation')['validation']
     elif args.set_type == 'test':
         query_data_list  = load_dataset('osunlp/TravelPlanner','test')['test']
+    elif args.set_type == 'train':
+        query_data_list  = load_dataset('osunlp/TravelPlanner','train')['train']
 
     idx_number_list = [i for i in range(1,len(query_data_list)+1)]
     for idx in tqdm(idx_number_list[:]):

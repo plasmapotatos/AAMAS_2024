@@ -65,7 +65,7 @@ Query: {query}
 Travel Plan:
 """
 
-PLANNER_INSTRUCTION = """You are a proficient planner. You are given a travel planning query reference information for the travel plan in CSV format. Your task is to output the travel plan. Additionally, follow the following constraints: 
+PLANNER_INSTRUCTION = """You are a proficient planner. You are given a travel planning query reference information for the travel plan in CSV format. Your task is to output the travel plan. Additionally, follow the following constraints:
 1. Ensure the travel plan includes specifics such as flight numbers (e.g., F0123456), restaurant names, and hotel names.
 2. Derive all information in the travel plan from the provided reference information, adhering strictly to the format given in the example.
 3. Verify that the city sequence starts and ends in the same city to form a closed circle.
@@ -86,60 +86,19 @@ PLANNER_INSTRUCTION = """You are a proficient planner. You are given a travel pl
 18. Ensure accommodations adhere to the specified room type constraints. For example, if "not shared room" is specified, avoid booking shared rooms.
 19. Adhere to the house rules specified in the query. Avoid accommodations that do not meet rules such as "no smoking," "no parties," or "no pets."
 20. Select restaurants that offer the specified cuisines in the query. Ensure that the chosen restaurants match the required cuisine types.
-21. Ensure the total cost of the travel plan does not exceed the specified budget in the query. 22. Include costs for transportation, meals, and accommodations.
+21. Ensure the total cost of the travel plan does not exceed the specified budget in the query. 
+22. Include costs for transportation, meals, and accommodations.
 23. When listing meals (breakfast, lunch, dinner), ensure the selected restaurants are valid and within the destination city, avoiding the origin city unless specified otherwise.
 24. Validate the availability and details of all flights, accommodations, and restaurants to ensure accuracy and feasibility within the travel dates and locations.
 25. Maintain consistency and accuracy in city names and other relevant location information to ensure proper validation by the evaluation script.
-***** Example *****
-Query: Could you create a travel plan for 7 people from Ithaca to Charlotte spanning 3 days, from March 8th to March 14th, 2022, with a budget of $10,000?
-Travel Plan:
-Day 1:
-Current City: from Ithaca to Charlotte
-Transportation: Flight Number: F3633413, from Ithaca to Charlotte, Departure Time: 05:38, Arrival Time: 07:46, Cost: 225
-Breakfast: Nagaland's Kitchen, Charlotte, Cost: 73, Cuisines: "Pizza, American, Desserts"
-Attraction: The Charlotte Museum of History, Charlotte
-Lunch: Cafe Maple Street, Charlotte, Cost: 91, "Fast Food, Tea, Italian"
-Dinner: Bombay Vada Pav, Charlotte, Cost: 33, "Desserts, Pizza, Italian, BBQ, Cafe"
-Accommodation: Affordable Spacious Refurbished Room in Bushwick!, Charlotte, Cost: 274, Maximum Occupancy: 1, House Rules: No Visitors, Minimum Nights: 2
-
-Number of People = 7
-Total Cost = 7 * 225 + 7 * 73 + 7 * 91 + 7 * 33 + 7 * 274 / 1 = 4872
-Accomodation Minimum Nights: 1/2
- 
-Day 2:
-Current City: Charlotte
-Transportation: -
-Breakfast: Olive Tree Cafe, Charlotte, Cost: 23, Cuisines: “Tea, Chinese, Desserts”
-Attraction: The Mint Museum, Charlotte;Romare Bearden Park, Charlotte.
-Lunch: Birbal Ji Dhaba, Charlotte, Cost: 40, Cuisines: "Cafe, Bakery, Desserts"
-Dinner: Pind Balluchi, Charlotte, Cost: 42, Cuisines: "Pizza, French, Mexican, BBQ, Cafe, Seafood"
-Accommodation: Affordable Spacious Refurbished Room in Bushwick!, Charlotte, Cost: 274, Maximum Occupancy: 1, House Rules: No Visitors, Minimum Nights: 2
-
-Number of people = 7
-Total cost = 7 * 23 + 7 *40 + 7 * 42 + 7 * 274 / 1 = 2653
-Accommodation Minimum Nights: 2/2
- 
-Day 3:
-Current City: from Charlotte to Ithaca
-Transportation: Flight Number: F3786167, from Charlotte to Ithaca, Departure Time: 21:42, Arrival Time: 23:26, Cost: 175
-Breakfast: Subway, Charlotte, Cost: 60, Cuisines: "Tea, Cafe, Mexican, Chinese, Seafood"
-Attraction: Books Monument, Charlotte, 
-Lunch: Olive Tree Cafe, Charlotte, Cost: 23, Cuisines: “Tea, Chinese, Desserts”
-Dinner: Kylin Skybar, Charlotte, Cost: 44, Cuisines: "Tea, Cafe, Pizza, Italian"
-Accommodation: -
-
-Number of people = 7
-Total cost = 7 * 175 + 7 * 60 + 7 * 23 + 7 * 44 = 2114
-
-Total cost across all days = 4872 + 2653 + 2114 = 9639
-Cuisines: The prompt specifies no cuisines, so all cuisines constraints are satisfied.
-
+***** Example 1 *****
+{example}
 ***** Example Ends *****
 
 Given information: {text}
 Query: {query}
 Travel Plan:
-"""
+""" #example 10
 
 COT_PLANNER_INSTRUCTION = """You are a proficient planner. Based on the provided information and query, please give me a detailed plan, including specifics such as flight numbers (e.g., F0123456), restaurant names, and hotel names. Note that all the information in your plan should be derived from the provided data. You must adhere to the format given in the example. Additionally, all details should align with common sense. Attraction visits and meals are expected to be diverse. The symbol '-' indicates that information is unnecessary. For example, in the provided sample, you do not need to plan after returning to the departure city. When you travel to two cities in one day, you should note it in the 'Current City' section as in the example (i.e., from A to B). 
 
@@ -317,8 +276,19 @@ Current State: {current_state}
 Travel Plan:
 """
 
+DISCRIMINATOR_PROMPT = """You are an expert tasked with finding the optimal prompt to prompt a few-shot travel planning agent to maximize the commonsense constraint metric given by the following commonsense constraint evaluation script. The travel planning agent will be given a prompt and the following example and then will be evaluated on a validation data split. Essentially, your task is to see if the example given serves as a good example to cover all of the evaluation functions in the evaluation script. Your output must first consist of reasoning, then an integer score from 1 to 100, with 100 being the best, most informative example, and 1 being the worst, least informative example.
+Evaluation Script:
+{eval_script}
+Example:
+{example}
+
+***** Please provide your score enclosed in <output> tags like this: <output>34</output>. *****
+If you believe the example is perfect, you can give a score of 100. If you believe the example is terrible, you can give a score of 1. If you believe the example is average, you can give a score of 50. Additionally, provide a confidence score from 1 to 100, which is how confident you are in your answer, with 1 being least confident and 100 being most confident. Enclose this answer in <confidence> tags like follows: <confidence>68></confidence>.
+
+"""
+
 planner_agent_prompt = PromptTemplate(
-    input_variables=["text", "query"],
+    input_variables=["text", "query", "example"],
     template=PLANNER_INSTRUCTION,
 )
 

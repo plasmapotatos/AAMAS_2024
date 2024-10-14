@@ -1,0 +1,44 @@
+Query: Please help me plan a trip from St. Petersburg to Rockford spanning 3 days from March 16th to March 18th, 2022. The travel should be planned for a single person with a budget of $1,700.
+
+Travel Plan:
+
+Days: 1
+Current City: from St. Petersburg to Rockford
+Transportation: Flight Number: F3573659, from St. Petersburg to Rockford, Departure Time: 15:40, Arrival Time: 17:04, cost: 474
+Breakfast: -
+Attraction: -
+Lunch: -
+Dinner: Flying Mango, Rockford, cost: 20, cuisines: American, BBQ, Seafood
+Accommodation: Private Room in a two-bedroom apartment, Rockford, cost: 210, maximum occupancy: 2, house rules: No visitors & No smoking, minimum nights: 1
+
+Number of people: 1
+Total cost: 474 + 20 + 210 = 704
+Accommodation minimum nights: 1/1
+
+Days: 2
+Current City: Rockford
+Transportation: -
+Breakfast: Grappa - Shangri-Las - Eros Hotel, Rockford, cost: 21, cuisines: Bakery, Desserts, Italian
+Attraction: Anderson Japanese Gardens, Rockford; Midway Village Museum, Rockford
+Lunch: Gajalee Sea Food, Rockford, cost: 49, cuisines: Bakery, BBQ
+Dinner: Aroma Rest O Bar, Rockford, cost: 58, cuisines: Bakery, Fast Food, Chinese, American, Seafood
+Accommodation: Private Room in a two-bedroom apartment, Rockford, cost: 210, maximum occupancy: 2, house rules: No visitors & No smoking, minimum nights: 1
+
+Number of people: 1
+Total cost: 21 + 49 + 58 + 210 = 338
+Accommodation minimum nights: 2/1
+
+Days: 3
+Current City: from Rockford to St. Petersburg
+Transportation: Flight Number: F3573120, from Rockford to St. Petersburg, Departure Time: 19:00, Arrival Time: 22:43, cost: 346
+Breakfast: Dial A Cake, Rockford, cost: 29, cuisines: Cafe, American, Mediterranean, Desserts
+Attraction: Ethnic Heritage Museum, Rockford; Blackhawk Springs Forest Preserve, Rockford
+Lunch: Subway, Rockford, cost: 26, cuisines: Bakery, Pizza, BBQ, Desserts
+Dinner: Moets Arabica, Rockford, cost: 43, cuisines: Tea, Bakery, Indian, Fast Food
+Accommodation: -
+
+Number of people: 1
+Total cost: 346 + 29 + 26 + 43 = 444
+
+Total cost across all days: 704 + 338 + 444 = 1,486
+Cuisines: The prompt specifies no cuisines, so all cuisine constraints are satisfied.

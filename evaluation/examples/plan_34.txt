@@ -1,0 +1,44 @@
+Query: Could you create a travel plan starting from Provo to Phoenix for 2 people, from March 24th to March 26th, 2022? Our budget is set at $1,400. We'll be bringing our pets along, so accommodations with pet-friendly house rules would be preferred. We intend to stay in private rooms. In terms of food, we'd like to have a variety of cuisines, including Indian, American, French, and Italian.
+
+Travel Plan:
+
+Days: 1
+Current City: from Provo to Phoenix
+Transportation: Self-driving, from Provo to Phoenix, duration: 9 hours 40 mins, distance: 997 km, cost: 49
+Breakfast: -
+Attraction: -
+Lunch: -
+Dinner: Vero Gusto, Phoenix, cost: 13, cuisines: Desserts, Indian, BBQ
+Accommodation: Lower East Side Oasis (private room), Phoenix, cost: 487, maximum occupancy: 2, house rules: No children under 10 & No visitors, minimum nights: 2
+
+Number of people: 2
+Total cost: 49 + 13 * 2 + 487 = 562
+Accommodation minimum nights: 1/2
+
+Days: 2
+Current City: Phoenix
+Transportation: -
+Breakfast: Cafe Amigo, Phoenix, cost: 24, cuisines: Tea, Desserts, Italian
+Attraction: Phoenix Art Museum, Phoenix; Enchanted Island Amusement Park, Phoenix; Hole in the Rock, Phoenix
+Lunch: De Bone Chicken, Phoenix, cost: 59, cuisines: Italian, BBQ, Fast Food, American, Seafood
+Dinner: Doughlicious, Phoenix, cost: 26, cuisines: Tea, Pizza, French, Cafe, Mediterranean, Seafood
+Accommodation: Lower East Side Oasis (private room), Phoenix, cost: 487, maximum occupancy: 2, house rules: No children under 10 & No visitors, minimum nights: 2
+
+Number of people: 2
+Total cost: (24 + 59 + 26) * 2 + 487 = 705
+Accommodation minimum nights: 2/2
+
+Days: 3
+Current City: from Phoenix to Provo
+Transportation: Self-driving, from Phoenix to Provo, duration: 9 hours 32 mins, distance: 996 km, cost: 49
+Breakfast: Rupa Bangali Dhaba, Phoenix, cost: 15, cuisines: Cafe, Pizza, Indian
+Attraction: -
+Lunch: -
+Dinner: -
+Accommodation: -
+
+Number of people: 2
+Total cost: 49 + 15 * 2 = 79
+
+Total cost across all days: 562 + 705 + 79 = 1,346
+Cuisines: The prompt specifies Indian, American, French, and Italian.

@@ -1,0 +1,25 @@
+To evaluate the prompt and the provided example for a travel planning agent, we must consider several evaluation criteria based on the logical flow of the travel plan, the constraints provided in the query, and the overall coherence and comprehensiveness of the itinerary.
+
+**Reasoning:**
+
+1. **Departure and City Coverage**: The prompt specifies that the journey begins in San Jose and includes two cities in Idaho. This requirement is met as Boise and Idaho Falls are listed as destinations, fulfilling the user's goal.
+
+2. **Duration**: The query asks for a 5-day itinerary, and the plan includes exactly 5 days, consisting of clear activities each day.
+
+3. **Transportation**: The itinerary incorporates different forms of transportation, including a flight and taxis. Specific transportation details (like flight numbers) are provided, which adds realism and enhances user understanding.
+
+4. **Accommodation and Dining**: The example features accommodations for each night, including costs and other relevant details. Meals are also recorded daily, with a variety of dining options satisfying the user's culinary interests in Indian and French cuisine. Each meal is documented, and special attention is given to specific cuisines.
+
+5. **Cost Details**: The total cost is calculated, taking into account the number of people and individual contributions for meals. This reflects thoughtfulness in budgeting, a key consideration per the user's query.
+
+6. **Attractions**: Each day includes proposed attractions, featuring various parks and museums. This adds depth and enjoyment to the itinerary while supporting the requirement for engaging activities.
+
+7. **Cohesion and Clarity**: The flow of the plan from day to day has a logical progression, with transitional trips between locations clearly stated.
+
+8. **Validity of Information**: All mentioned cities and attractions are realistic and should, in practice, adhere to the constraints of the original query, including the cities in Idaho and relevant attractions.
+
+9. **Potential Improvements**: While the example effectively meets many criteria, there could be enhancements, such as clearer differentiation between repeat restaurants and attractions to ensure diversity, or mentioning how each destination contributes to the overall experience. Furthermore, confirming that all restaurants mentioned align with the specified cuisines could further strengthen the compliance with the user's preferences.
+
+In summary, the example comprehensively addresses the user's needs while remaining within the expected parameters. Therefore, it receives a high rating for its quality of detail, flow, and adherence to constraints.
+
+<output>92</output>

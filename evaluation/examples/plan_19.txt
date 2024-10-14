@@ -1,0 +1,44 @@
+Query: "Please help in creating a travel plan for two people departing from Washington and heading to Orlando for three days, between March 15th and March 17th, 2022. The budget for this trip is $2,000 and we would prefer to have private rooms for our stay."
+
+Travel Plan:
+
+Days: 1
+Current City: from Washington to Orlando
+Transportation: Self-driving, from Washington to Orlando, duration: 12 hours 14 mins, distance: 1,364 km, cost: 68
+Breakfast: -
+Attraction: -
+Lunch: -
+Dinner: Wai Yu Mun Ching, Orlando, cost: 51, cuisines: Tea, Pizza, Desserts
+Accommodation: Private room, 1 bed, 2 guests, 3333 Broadway, Orlando, cost: 705, maximum occupancy: 2, house rules: No pets, minimum nights: 1
+
+Number of people: 2
+Total cost: 68 x 1 + 51 x 2 + 705 x 1 = 875
+Accommodation minimum nights: 1/1
+
+Days: 2
+Current City: Orlando
+Transportation: -
+Breakfast: Lounge Bakery, Orlando, cost: 31, cuisines: Tea, Italian, BBQ, Fast Food, Cafe
+Attraction: The Wheel at ICON Park, Orlando; Seuss Landing, Orlando
+Lunch: Domino's Pizza, cost: 12, cuisines: Tea, Pizza, French, BBQ, Bakery
+Dinner: Spice Hut, cost: 25, cuisines: Chinese, Cafe, Seafood
+Accommodation: Private room, 1 bed, 2 guests, 3333 Broadway, Orlando, cost: 705, maximum occupancy: 2, house rules: No pets, minimum nights: 1
+
+Number of people: 2
+Total cost: (31 + 12 + 25) x 2 + 705 x 1 = 841
+Accommodation minimum nights: 1/1
+
+Days: 3
+Current City: from Orlando to Washington
+Transportation: Self-driving, from Orlando to Washington, duration: 12 hours 9 mins, distance: 1,361 km, cost: 68
+Breakfast: Fun Bytes, Orlando, cost: 13, cuisines: Desserts, Tea, French, BBQ, Fast Food
+Attraction: -
+Lunch: -
+Dinner: -
+Accommodation: -
+
+Number of people: 2
+Total cost: 68 x 1 + 13 x 2 = 94
+
+Total cost across all days: 875 + 841 + 94 = 1,810
+Cuisines: The prompt specifies no cuisines, so all cuisine constraints are satisfied

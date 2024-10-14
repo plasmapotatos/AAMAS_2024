@@ -102,6 +102,8 @@ if __name__ == "__main__":
     parser.add_argument("--model_name", type=str, default="gpt-3.5-turbo-1106")
     parser.add_argument("--output_dir", type=str, default="./")
     parser.add_argument("--strategy", type=str, default="direct")
+    parser.add_argument("--example_plan_number", type=str, default="")
+    parser.add_argument("--example_folder", type=str, default="")
     args = parser.parse_args()
     directory = f"{args.output_dir}/{args.set_type}"
     if args.set_type == "validation":
@@ -110,10 +112,12 @@ if __name__ == "__main__":
         ]
     elif args.set_type == "test":
         query_data_list = load_dataset("osunlp/TravelPlanner", "test")["test"]
+    elif args.set_type == "train":
+        query_data_list = load_dataset("osunlp/TravelPlanner", "train")["train"]
     numbers = [i for i in range(1, len(query_data_list) + 1)]
 
     if args.strategy == "direct":
-        planner = Planner(model_name=args.model_name, agent_prompt=planner_agent_prompt)
+        planner = Planner(model_name=args.model_name, agent_prompt=planner_agent_prompt, example_plan_number=args.example_plan_number, example_folder=args.example_folder)
     elif args.strategy == "by_day":
         planner = ByDayPlanner(
             model_name=args.model_name, agent_prompt=langfun_day_by_day_agent_prompt
@@ -159,7 +163,7 @@ if __name__ == "__main__":
                         reference_information
                     )
                     planner_results = planner.run(
-                        reference_information, query_data["query"]
+                        reference_information, query_data["query"], log_file=f"logs_{number}.txt"
                     )
                 else:
                     planner_results = planner.run(

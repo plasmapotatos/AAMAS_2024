@@ -13,3 +13,5 @@ database/
 *.pyc
 .env
 tmp/
+
+build/

@@ -53,13 +53,18 @@ class Planner:
                  # args,
                  agent_prompt: PromptTemplate = planner_agent_prompt,
                  model_name: str = 'gpt-3.5-turbo-1106',
+                 example_plan_number: int = 1,
                  strategy: str = "direct",
+                 example_folder: str = "evaluation/examples",
                  ) -> None:
 
         self.agent_prompt = agent_prompt
         self.scratchpad: str = ''
         self.model_name = model_name
         self.enc = tiktoken.encoding_for_model("gpt-3.5-turbo")
+        self.example_plan_number = example_plan_number
+        self.strategy = strategy
+        self.example_folder = example_folder
 
         if model_name in  ['mistral-7B-32K']:
             # see: finetune https://blog.gopenai.com/bye-bye-llama-2-mistral-7b-is-taking-over-get-started-with-mistral-7b-instruct-1504ff5f373c
@@ -68,6 +73,9 @@ class Planner:
                      openai_api_key="EMPTY", 
                      openai_api_base="http://localhost:8301/v1", 
                      model_name="gpt-3.5-turbo")
+
+        elif model_name in ['gpt-4o-mini']:
+            self.llm = ChatOpenAI(model_name='gpt-4o-mini', temperature=0, max_tokens=4096, openai_api_key=OPENAI_API_KEY)
         
         elif model_name in  ['ChatGLM3-6B-32K']:
             self.llm = ChatOpenAI(temperature=0,
@@ -101,10 +109,28 @@ class Planner:
 
     def run(self, text, query, log_file=None) -> str:
         if log_file:
-            log_file.write('\n---------------Planner\n'+self._build_agent_prompt(text, query))
+            prompt = None
+            if self.model_name in ['gpt-4o-mini']:
+                example_path = f"{self.example_folder}/plan_{self.example_plan_number}.txt"
+                example = open(example_path, 'r').read()
+                prompt = self.agent_prompt.format(
+                    text=text,
+                    query=query,
+                    example=example)
+            else:
+                prompt = self._build_agent_prompt(text, query)
+            log_file.write('\n---------------Planner\n'+prompt)
         # print(self._build_agent_prompt(text, query))
         if self.model_name in ['gemini']:
             return str(self.llm.invoke(self._build_agent_prompt(text, query)).content)
+        elif self.model_name in ['gpt-4o-mini']:
+            example_path = f"{self.example_folder}/plan_{self.example_plan_number}.txt"
+            example = open(example_path, 'r').read()
+            prompt = self.agent_prompt.format(
+                text=text,
+                query=query,
+                example=example)
+            return str(self.llm([HumanMessage(content=prompt)]).content)
         elif self.model_name in ['llama2', 'llama2-70b']:
             return str(llama_request(self._build_agent_prompt(text, query), self.model_name))
         elif self.model_name in ['mixtral-8x7b']:
@@ -116,10 +142,13 @@ class Planner:
             elif self.strategy in ['by_day']:
                 return langfun_request_by_day(text, query)
         else:
-            if len(self.enc.encode(self._build_agent_prompt(text, query))) > 12000:
+            if len(self.enc.encode(self._build_agent_prompt(text, query))) > 20000:
                 return 'Max Token Length Exceeded.'
             else:
-                return self.llm([HumanMessage(content=self._build_agent_prompt(text, query))]).content
+                # print("prompting???")
+                # print("prompt:", self._build_agent_prompt(text, query))
+                output = self.llm([HumanMessage(content=self._build_agent_prompt(text, query))]).content
+                return output
 
     def _build_agent_prompt(self, text, query) -> str:
         return self.agent_prompt.format(

@@ -181,6 +181,7 @@ def prompt_chatgpt(system_input, user_input, temperature,save_path,index,history
                           {"role": "assistant", "content": "xxx"}]
     return: assistant_output, (updated) history, money cost
     '''
+    print(f"ChatGPT: {system_input} {user_input}")
     if len(history) == 0:
         history = [{"role": "system", "content": system_input}]
     history.append({"role": "user", "content": user_input})
@@ -273,6 +274,8 @@ def build_plan_format_conversion_prompt(directory, set_type='validation',model_n
         query_data_list  = load_dataset('osunlp/TravelPlanner','validation')['validation']
     elif set_type == 'test':
         query_data_list  = load_dataset('osunlp/TravelPlanner','test')['test']
+    elif set_type == 'train':
+        query_data_list  = load_dataset('osunlp/TravelPlanner','train')['train']
 
     idx_number_list = [i for i in range(1,len(query_data_list)+1)]
     if mode == 'two-stage':
